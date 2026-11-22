@@ -12,6 +12,7 @@ This guide contains the verified hardware and firmware offsets extracted directl
 * **Prerequisites for Writing:**
   1. **Disable Secure Boot:** Enter BIOS (`F2` at startup) -> `Security` / `Boot` -> Set **Secure Boot** to **Disabled**. (If Secure Boot is enabled, Dell blocks unsigned EFI utilities like `modGRUBShell` and rejects variable modification calls).
   2. **Clear BIOS Admin Password:** If you set a supervisor/admin password in the Dell BIOS, remove it temporarily so NVRAM variable writes are not rejected.
+  3. ** modGRUBShell.efi
 
 ---
 

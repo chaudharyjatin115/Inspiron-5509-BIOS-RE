@@ -69,10 +69,15 @@ python3 scripts/check_efivars.py
 
 ---
 
-## 4. Deep-Dive Reverse Engineering Docs
+## 4. Repository Layout & Reverse Engineering Docs
 
-* **[S3 Sleep vs S0ix Disassembly (`docs/s3-sleep-re.md`)](docs/s3-sleep-re.md)** — Disassembly of `AdvancedAcpiDxe` and `SetupVariablePei` proving how `Setup[0x0E]` patches `DSDT` `SS3` and `Setup[0x1C]` toggles `FACP.Flags` bit 21 (`LOW_POWER_S0_IDLE_CAPABLE`) and `GNVS.S0ID`, plus the PEI/DXE/SMM S3 module inventory.
-* **[ACPI & Hardware Map (`docs/acpi-and-hardware-map.md`)](docs/acpi-and-hardware-map.md)** — Full `DSDT`/`SSDT` findings: PCIe paths (`PEG0.PEGP` NVMe vs empty `RP09`), `GPI0` (`INT34C5`) vs `VoodooGPIO` binary mismatch, `TPD0` `OSYS` initialization order, `OSID()` gating `BRT6` brightness keys, and `xh_Dell_` USB port map vs `lsusb -t`.
+* **[docs/firmware-inventory.md](docs/firmware-inventory.md)** — BIOS `1.33.1` PFS payload versions (`EC 1.11.0`, `ME 15.0.50.2633`, `ISH 5.4.1.4479`, `Cypress PD`, `TBT Retimer`) and key PEI/DXE/SMM module GUIDs.
+* **[docs/ifr-offsets.md](docs/ifr-offsets.md)** — Full categorized table of hidden UEFI IFR offsets (`SaSetup`, `CpuSetup`, `Setup`, `PchSetup`) including BIOS/RTC/GPIO locks, power limits, Thunderbolt 4 / USB4 tunneling, and sleep states.
+* **[docs/s3-sleep-re.md](docs/s3-sleep-re.md)** — Disassembly of `AdvancedAcpiDxe` and `SetupVariablePei` proving how `Setup[0x0E]` patches `DSDT` `SS3` and `Setup[0x1C]` toggles `FACP.Flags` bit 21 (`LOW_POWER_S0_IDLE_CAPABLE`) and `GNVS.S0ID`, plus the PEI/DXE/SMM S3 module inventory.
+* **[docs/acpi-and-hardware-map.md](docs/acpi-and-hardware-map.md)** — Full `DSDT`/`SSDT` findings: PCIe paths (`PEG0.PEGP` NVMe vs empty `RP09`), `GPI0` (`INT34C5`) vs `VoodooGPIO` binary mismatch, `TPD0` `OSYS` initialization order, `OSID()` gating `BRT6` brightness keys, and `xh_Dell_` USB port map vs `lsusb -t`.
+* **[ifr/](ifr/)** — Full UTF-8 sanitized `ifrextract` dumps of `Setup` and `DellSetupFormSets` from BIOS `1.33.1`.
+* **[acpi/](acpi/)** — Clean decompiled OEM `DSDT` and `SSDT` tables (`.dsl`) from live `acpidump` (`MSDM`/`SLIC` omitted).
+* **[scripts/](scripts/)** — `check_efivars.py` (inspect live Linux `efivarfs` offsets) and `parse_ifr.py` (search/list VarStores & options in `ifr/Setup.ifr.txt`).
 
 ---
 

@@ -179,10 +179,11 @@ Once DVMT is set to 96MB in hardware, you can remove the fallback software patch
 
 ---
 
-## 8. Troubleshooting
 
-* **Error: `can't set variable using efi` or `write protected`:**
-  * Ensure **Secure Boot** is disabled in the `F2` Dell BIOS setup.
-  * Ensure no BIOS Admin Password is set.
-* **If a future Dell BIOS update resets settings:**
-  * Updating your BIOS resets NVRAM variables to factory defaults (`0xFE` / 60MB). Keep this USB drive handy to re-run the `setup_var_cv` commands after any future BIOS update.
++## 8. Notes & Troubleshooting                                           
+    +                                                                        
+    +* **Write Failures (`can't set variable using efi` / write error):**    
+    Ensure Secure Boot is disabled and the BIOS admin password is cleared in 
+    `F2` setup.                                                              
+    +* **BIOS Updates:** BIOS updates restore NVRAM variables to factory     
+    defaults (`SaSetup[0x84] = 0xFE`), requiring offsets to be reapplied.

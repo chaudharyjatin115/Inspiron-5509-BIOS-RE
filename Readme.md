@@ -180,10 +180,7 @@ Once DVMT is set to 96MB in hardware, you can remove the fallback software patch
 ---
 
 
-+## 8. Notes & Troubleshooting                                           
-    +                                                                        
-    +* **Write Failures (`can't set variable using efi` / write error):**    
-    Ensure Secure Boot is disabled and the BIOS admin password is cleared in 
-    `F2` setup.                                                              
-    +* **BIOS Updates:** BIOS updates restore NVRAM variables to factory     
-    defaults (`SaSetup[0x84] = 0xFE`), requiring offsets to be reapplied.
+## 8. Notes & Troubleshooting
+
+* **Write Failures (`can't set variable using efi` / write error):** Ensure Secure Boot is disabled and the BIOS admin password is cleared in `F2` setup.
+* **BIOS Updates:** BIOS updates restore NVRAM variables to factory defaults (`SaSetup[0x84] = 0xFE`), requiring offsets to be reapplied.
